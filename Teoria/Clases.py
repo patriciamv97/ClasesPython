@@ -42,8 +42,9 @@ class Punto2:
         if x > 0:
             self.__x = x
         else:
-            self.__x = 0
-            print("O valor é inicializado a cero")
+            raise ValueError
+            # self.__x = 0
+            # print("O valor é inicializado a cero")
 
     def setY(self, y):
         if y > 0:
@@ -67,7 +68,7 @@ p2 = Punto2(3, 5)
 # print(p2._Punto2__x)
 # print(p2._Punto2__getY())
 
-p2.x = 10
+p2.x = -10
 
 print(p2.x)
 

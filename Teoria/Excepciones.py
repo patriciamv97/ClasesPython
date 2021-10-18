@@ -10,3 +10,4 @@ else:
     print("A división realizouse correctamente")
 finally:
     print("A división fixose ou non ")
+

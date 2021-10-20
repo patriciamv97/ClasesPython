@@ -11,3 +11,20 @@ else:
 finally:
     print("A división fixose ou non ")
 
+
+'''
+Tipos de excepciones :
+
+- StandardError (superclase) :
+    
+    - Warning
+    - Error :
+        - InterfaceError
+        -DatabaseError :
+            - DataError
+            - OperatorError
+            - IntegrityError
+            - ProgrammingError
+            - NotSupportedError
+
+'''

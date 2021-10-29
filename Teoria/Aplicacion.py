@@ -27,14 +27,14 @@ class Aplicacion:
         fiestra.show_all()
 
     def onSaudoClicked(self, boton):
-        nome = self.txtsaudo.get_text()
-        self.label.set_text("Me voi ah suisidá" + nome)
+        self.metodoComun()
 
     def ontxtsaudoActivated(self, control):
-        """
+        self.metodoComun()
 
-
-        """
+    def metodoComun(self):
+        nome = self.txtsaudo.get_text()
+        self.label.set_text("Ola ".upper() + nome.upper())
 
 
 if __name__ == "__main__":

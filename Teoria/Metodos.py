@@ -96,3 +96,40 @@ for n in xerador:
 
 for i in range(7, 15, 2):
     print(i)
+
+
+def unha_funcion(parametro1, parametro2):
+    print(parametro1)
+    print(parametro2)
+
+
+unha_funcion(parametro2=2.455, parametro1="Hola")
+
+
+def unha_funcion2(paramtro1="HI", parametro2=2.5):
+    print(paramtro1)
+    print(parametro2)
+
+
+unha_funcion2()
+
+
+def suma(n1, n2, *numeros):
+    suma = n1 + n2
+
+    for n in numeros:
+        suma = suma + n
+    return suma
+
+
+print(suma(2, 2, 3))
+
+
+def suma2(n1, n2, **numeros):
+    suma = n1 + n2
+    for n in numeros.items():
+        suma = suma + n[1]
+    return suma
+
+
+print(suma2(2, 2, numero3=3, numero4=3))

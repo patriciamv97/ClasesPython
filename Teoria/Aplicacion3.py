@@ -61,15 +61,22 @@ class Aplicacion(Gtk.Window):
         etiqueta6.set_mnemonic_widget(boton)
         caixaV_dereita.pack_start(boton, True, True, 0)
         boton.connect("clicked", self.botonCLicked)
+        #  boton.connect("clicked", self.botonCLicked, etiqueta)
+
         self.add(caixaH)
         self.connect("destroy", Gtk.main_quit)
         self.show_all()
 
     def botonCLicked(self, boton):
-
         self.contador += 1
         self.etiqueta.set_text(str(self.contador))
 
+
+'''
+    def botonCLicked(self, boton, etiq):
+        self.contador += 1
+        etiq.set_text(str(self.contador))
+'''
 
 if __name__ == "__main__":
     Aplicacion()

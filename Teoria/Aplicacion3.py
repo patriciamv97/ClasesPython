@@ -20,6 +20,7 @@ class Aplicacion(Gtk.Window):
 
         etiqueta2 = Gtk.Label(label="Etiqueta con texto xustificando a esquera.\nCon múltiples liñas \nAs liñas van a "
                                     "esquerda")
+
         etiqueta2.set_justify(Gtk.Justification.LEFT)
         caixaV_esquerda.pack_start(etiqueta2, True, True, 0)
 

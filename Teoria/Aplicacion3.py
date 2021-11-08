@@ -6,6 +6,7 @@ from gi.repository import Gtk
 
 class Aplicacion(Gtk.Window):
     def __init__(self):
+        self.contador = 0
         super().__init__(title="Exemplo de uso de Gtk.Label")
         # self.set_title("Exemplo de uso de Gtk.Label")
         caixaH = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
@@ -14,8 +15,8 @@ class Aplicacion(Gtk.Window):
         caixaH.pack_start(caixaV_esquerda, True, True, 0)
         caixaH.pack_start(caixaV_dereita, True, True, 0)
 
-        etiqueta = Gtk.Label(label="Etiqueta normal")
-        caixaV_esquerda.pack_start(etiqueta, True, True, 0)
+        self.etiqueta = Gtk.Label(label="Etiqueta normal")
+        caixaV_esquerda.pack_start(self.etiqueta, True, True, 0)
 
         etiqueta2 = Gtk.Label(label="Etiqueta con texto xustificando a esquera.\nCon múltiples liñas \nAs liñas van a "
                                     "esquerda")
@@ -45,13 +46,29 @@ class Aplicacion(Gtk.Window):
 
         etiqueta5 = Gtk.Label()
         etiqueta5.set_markup("O texto pode ter <small>pequeno</small>, <big>grande</big>,"
-                             "<b>negrita</b>, <i>cursiva</i>, e apuntar cara a"
+                             "<b>negrita</b>, <i>cursiva</i>, e apuntar cara a "
                              '<a href="https://www.gtk.org"'
-                             'title = Pulsa para saber mais">interrede</a>')
-        caixaV_dereita.pack_start(etiqueta5, True, True,0)
+                             'title ="Pulsa para saber mais">interrede</a>')
+        etiqueta5.set_line_wrap(True)
+        etiqueta5.set_max_width_chars(48)
+        caixaV_dereita.pack_start(etiqueta5, True, True, 0)
+
+        etiqueta6 = Gtk.Label.new_with_mnemonic("_Press Alt +P para seleccionar o botón dereito")
+        etiqueta6.set_selectable(True)
+        caixaV_dereita.pack_start(etiqueta6, True, True, 0)
+
+        boton = Gtk.Button(label="Pulsa...")
+        etiqueta6.set_mnemonic_widget(boton)
+        caixaV_dereita.pack_start(boton, True, True, 0)
+        boton.connect("clicked", self.botonCLicked)
         self.add(caixaH)
         self.connect("destroy", Gtk.main_quit)
         self.show_all()
+
+    def botonCLicked(self, boton):
+
+        self.contador += 1
+        self.etiqueta.set_text(str(self.contador))
 
 
 if __name__ == "__main__":

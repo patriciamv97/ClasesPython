@@ -9,6 +9,10 @@ class Aplicacion:
         wndFiestra = Gtk.Window()
         wndFiestra.set_title("A segunda aplicacion")
         caixaV = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        print(dir(caixaV.props))
+        caixaV.props.border_width = 15
+        caixaV.get_property("border_width")
+        caixaV.set_property("orientation", Gtk.Orientation.HORIZONTAL)
         wndFiestra.add(caixaV)
         self.txtNome = Gtk.Entry()
         self.txtNome.set_text("Escribe o teu nome")

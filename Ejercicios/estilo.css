@@ -1,0 +1,13 @@
+        #winFiestraPrincipal_verde{
+            background-color: green;
+        }
+         #winFiestraPrincipal_azul{
+            background-color: blue;
+        }
+         #winFiestraPrincipal_vermello{
+            background-color: red;
+        }
+        button {
+        background-image: linear-gradient(pink);
+        border-color:blue;
+        }

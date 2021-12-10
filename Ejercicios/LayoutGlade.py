@@ -52,7 +52,7 @@ class Aplication(Gtk.Window):
         botonEditarEtiqueta = Gtk.Button()
         imaxe = Gtk.Image.new_from_icon_name("preferences-other", Gtk.IconSize.BUTTON)
         botonEditarEtiqueta.set_image(imaxe)
-        botonEditarEtiqueta.connect("clicked", self.on_btnEditarEtiqueta_clicked)
+
         caixa.pack_start(botonEditarEtiqueta, True, False, 0)
         rede.attach_next_to(caixa, lblEtiqueta, Gtk.PositionType.RIGHT, 3, 2)
 
@@ -95,6 +95,7 @@ class Aplication(Gtk.Window):
         builder.connect_signals(sinais)
         caixaV.pack_start(caixaGlade, True, True, 0)
 
+        botonEditarEtiqueta.connect("clicked", self.on_btnEditarEtiqueta_clicked)
         cmdElipsis.append_text("Start")
         cmdElipsis.append_text("Midle")
         cmdElipsis.append_text("End")

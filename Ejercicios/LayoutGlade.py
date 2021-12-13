@@ -106,8 +106,8 @@ class Aplication(Gtk.Window):
 
     def on_cmdElipsis_changed(self, control):
         self.entryId.set_text(control.get_active_text())
-        punteiro=self.buferTxvEtiqueta.get_end_iter()
-        self.buferTxvEtiqueta.insert(punteiro, control.get_active_text()+"\n")
+        punteiro = self.buferTxvEtiqueta.get_end_iter()
+        self.buferTxvEtiqueta.insert(punteiro, control.get_active_text() + "\n")
 
     def on_btnEditarEtiqueta_clicked(self, control):
         self.entryId.set_text("Boton pulsado")

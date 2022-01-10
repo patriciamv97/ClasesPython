@@ -2,6 +2,7 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gio
+from gi.repository.GdkPixbuf import Pixbuf
 
 
 class Aplication(Gtk.Window):
@@ -30,6 +31,39 @@ class Aplication(Gtk.Window):
 
         caixaV.pack_start(cmbNomes, False, False, 0)
 
+        mdlPaises = Gtk.ListStore(str)
+        paises = ["Letonia", "Brasil", "Arxentina", "Surinam", "Kenia", "Islandia", "Xapón"]
+
+        for pais in paises:
+            mdlPaises.append([pais])
+
+        cmbPaises = Gtk.ComboBox.new_with_model(mdlPaises)
+        cmbPaises.connect("changed", self.on_cmbPaises_changed)
+        celda = Gtk.CellRendererText()
+        cmbPaises.pack_start(celda, True)
+        cmbPaises.add_attribute(celda, "text", 0)
+        caixaV.pack_start(cmbPaises, True, True, 10)
+
+        mdlImaxes = Gtk.ListStore(str, str)
+        imaxes = [("Cortar", "edit-cut"), ("pegar", "edit-paste"), ("Copiar", "edit-copy")]
+        for etiqueta, imaxe in imaxes:
+            mdlImaxes.append([etiqueta, imaxe])
+
+        cmbImaxes = Gtk.ComboBox.new_with_model(mdlImaxes)
+        celda = Gtk.CellRendererText()
+        cmbImaxes.pack_start(celda, True)
+        cmbImaxes.add_attribute(celda, "text", 0)
+        caixaV.pack_start(cmbImaxes, True, True, 0)
+
+        tvrImaxes = Gtk.TreeView()
+        tvrImaxes.set_model(mdlImaxes)
+        celdaTexto = Gtk.CellRendererText()
+        columnaTexto = Gtk.TreeViewColumn("Text", celdaTexto, text=0)
+        tvrImaxes.append_column(columnaTexto)
+        celdaImaxes = Gtk.CellRendererPixbuf()
+        columnaImaxes = Gtk.TreeViewColumn("Image", celdaImaxes, icon_name=1)
+        tvrImaxes.append_column(columnaImaxes)
+        caixaV.pack_start(tvrImaxes, True, True, 0)
         self.add(caixaV)
         self.connect("destroy", Gtk.main_quit)
         self.show_all()
@@ -54,6 +88,13 @@ class Aplication(Gtk.Window):
     def on_cmbNomesEntry_active(self, texto, modelo):
         print("Escrito :%s" % texto.get_text())
         modelo.append([10, texto.get_text()])
+
+    def on_cmbPaises_changed(self, combo):
+        fila = combo.get_active_iter()
+        if fila is not None:
+            modelo = combo.get_model()
+            pais = modelo[fila][0]
+            print("Pais seleccionado: %s" % pais)
 
 
 if __name__ == "__main__":

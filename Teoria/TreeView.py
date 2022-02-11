@@ -22,6 +22,9 @@ class Aplication(Gtk.Window):
         trvColumna = Gtk.TreeViewColumn('Parentesco')
         trvArboreXenealoxica.append_column(trvColumna)
         celda = Gtk.CellRendererText()
+
+        celda.set_property("editable", True)
+        celda.connect("edited", self.on_celda_edited, modelo)
         trvColumna.pack_start(celda, True)
         trvColumna.add_attribute(celda, "text", 0)
         trvColumna = Gtk.TreeViewColumn("Orde")
@@ -48,8 +51,11 @@ class Aplication(Gtk.Window):
         self.connect("destroy", Gtk.main_quit)
         self.show_all()
 
-    def on_celdaCombo_edited(self, control, fila, ruta, texto, modelo):
+    def on_celdaCombo_edited(self, control, fila, texto, modelo):
         modelo[fila][2] = texto
+
+    def on_celda_edited(self, control, fila, texto, modelo):
+        modelo[fila][0] = texto
 
 
 if __name__ == "__main__":

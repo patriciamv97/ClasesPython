@@ -1,5 +1,5 @@
 import gi
-import os
+
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
@@ -66,7 +66,7 @@ class Aplication(Gtk.Window):
         self.txtLinguaxe.set_text(modelo[punteiro][2])
         self.btnModificar.set_sensitive(True)
 
-    def on_btnModificar_clicked(self, boton, seleccion):
+    def on_btnModificar_clicked(self, boton,seleccion):
         modelo, fila = seleccion.get_selected()
         modelo[fila][0] = self.txtPrograma.get_text()
         modelo[fila][1] = int(self.txtAno.get_text())
